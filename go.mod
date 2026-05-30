@@ -1,4 +1,4 @@
-module prequal
+module github.com/madhavrajverma/Prequel-Load-balancer
 
 go 1.25.4
 

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"prequal/internal/lb"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/lb"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

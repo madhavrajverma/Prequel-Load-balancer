@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"prequal/internal/observability"
-	"prequal/internal/pool"
-	"prequal/internal/wrr"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/observability"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/pool"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/wrr"
 )
 
 type Router interface {

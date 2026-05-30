@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	"prequal/internal/lb"
-	"prequal/internal/pool"
-	"prequal/internal/wrr"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/lb"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/pool"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/wrr"
 )
 
 type Config struct {

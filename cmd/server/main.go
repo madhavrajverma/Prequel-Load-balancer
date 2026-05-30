@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"prequal/internal/server"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/server"
 )
 
 func main() {

@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"prequal/internal/observability"
-	"prequal/internal/selector"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/observability"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/selector"
 )
 
 const (

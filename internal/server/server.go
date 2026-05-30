@@ -11,7 +11,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"prequal/internal/observability"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/observability"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

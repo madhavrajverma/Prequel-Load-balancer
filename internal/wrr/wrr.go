@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"prequal/internal/observability"
+	"github.com/madhavrajverma/Prequel-Load-balancer/internal/observability"
 )
 
 const (
