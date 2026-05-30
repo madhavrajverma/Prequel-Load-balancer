@@ -372,3 +372,14 @@ func (lb *LoadBalancer) MetricsHandler() http.Handler {
 		fmt.Fprintf(w, "# Prequal metrics available at /metrics via promhttp\n")
 	})
 }
+
+// Router returns the underlying Router interface.
+// Used by the client package to call SelectBest directly.
+func (lb *LoadBalancer) Router() Router {
+	return lb.router
+}
+
+// MarkUnhealthy exposes the internal markUnhealthy for the client package.
+func (lb *LoadBalancer) MarkUnhealthy(url string) {
+	lb.markUnhealthy(url)
+}
