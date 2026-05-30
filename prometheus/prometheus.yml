@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+
+  # load balancer metrics
+  - job_name: prequal_lb
+    static_configs:
+      - targets: ["lb:8080"]
+
+  # server replica metrics
+  - job_name: prequal_servers
+    static_configs:
+      - targets:
+          - "server1:9001"
+          - "server2:9001"
+          - "server3:9001"

@@ -1,0 +1,27 @@
+madhavrajverma@Madhavs-MacBook-Air-188 Prequal % for i in {1..5}; do curl -s -X POST http://localhost:8080/api; echo; done
+
+{"processing_ms":78,"server":"server2"}
+
+{"processing_ms":84,"server":"server2"}
+
+{"processing_ms":72,"server":"server2"}
+
+{"processing_ms":54,"server":"server2"}
+
+{"processing_ms":96,"server":"server2"}
+
+
+running using wrr algo
+madhavrajverma@Madhavs-MacBook-Air-188 Prequal % for i in {1..5}; do curl -s -X POST http://localhost:8080/api; echo; done
+
+{"processing_ms":91,"server":"server1"}
+
+{"processing_ms":87,"server":"server1"}
+
+{"processing_ms":97,"server":"server1"}
+
+{"processing_ms":80,"server":"server2"}
+
+{"processing_ms":60,"server":"server2"}
+
+madhavrajverma@Madhavs-MacBook-Air-188 Prequal % 

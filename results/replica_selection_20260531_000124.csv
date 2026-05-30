@@ -1,0 +1,7 @@
+algo,load_pct,rps,p90_ms,p99_ms,errors,requests
+round_robin,70,100,77,203,0,2681
+round_robin,90,130,76,215,0,3411
+wrr,70,100,80,297,0,2625
+wrr,90,130,80,297,0,3303
+prequal,70,100,76,215,0,2648
+prequal,90,130,76,207,0,3401

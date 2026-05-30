@@ -1,0 +1,98 @@
+services:
+
+  server1:
+    build:
+      context: .
+      dockerfile: cmd/server/Dockerfile
+    command: ["./server", "--id=server1", "--port=9001", "--base-delay=50ms"]
+    ports:
+      - "9001:9001"
+    networks:
+      - prequal
+
+  server2:
+    build:
+      context: .
+      dockerfile: cmd/server/Dockerfile
+    command: ["./server", "--id=server2", "--port=9001", "--base-delay=50ms"]
+    ports:
+      - "9002:9001"
+    networks:
+      - prequal
+
+  server3:
+    build:
+      context: .
+      dockerfile: cmd/server/Dockerfile
+    command: ["./server", "--id=server3", "--port=9001", "--base-delay=80ms"]
+    ports:
+      - "9003:9001"
+    networks:
+      - prequal
+
+  lb:
+    build:
+      context: .
+      dockerfile: cmd/lb/Dockerfile
+    command: [
+      "--backends=http://server1:9001,http://server2:9001,http://server3:9001",
+      "--algo=prequal", 
+      "--qrif=0.84",
+      "--rprobe=2",
+      "--rremove=1",
+      "--delta=1"
+    ]
+    ports:
+      - "8080:8080"
+    depends_on:
+      - server1
+      - server2
+      - server3
+    networks:
+      - prequal
+
+  gen:
+    build:
+      context: .
+      dockerfile: cmd/gen/Dockerfile
+    command: [
+      "--target=http://lb:8080/api",
+      "--rps=100",
+      "--dur=3600s",
+      "--c=50",
+      "--variable=true"
+    ]
+    depends_on:
+      - lb
+    networks:
+      - prequal
+
+  prometheus:
+    image: prom/prometheus:v2.51.0
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - prequal
+
+  grafana:
+    image: grafana/grafana:10.4.0
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    depends_on:
+      - prometheus
+    networks:
+      - prequal
+
+networks:
+  prequal:
+    driver: bridge
